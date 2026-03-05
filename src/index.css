@@ -1,0 +1,281 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===================== CUSTOM BASE ===================== */
+:root {
+  --accent: #FF5F1F;
+  --accent-light: #FF7A40;
+  --accent-glow: rgba(255, 95, 31, 0.35);
+  --base: #0A0A0A;
+  --secondary: #1A1A1A;
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: auto; /* Lenis handles smooth scrolling */
+  background-color: var(--base);
+}
+
+body {
+  font-family: 'Lexend', sans-serif;
+  background-color: #0A0A0A;
+  color: #E0E0E0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===================== SCROLLBAR ===================== */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #0A0A0A; }
+::-webkit-scrollbar-thumb { background: #FF5F1F; border-radius: 2px; }
+
+/* ===================== SELECTION ===================== */
+::selection { background: rgba(255, 95, 31, 0.3); color: #fff; }
+
+/* ===================== GLASSMORPHISM ===================== */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+}
+
+.glass-dark {
+  background: rgba(10, 10, 10, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 95, 31, 0.15);
+}
+
+/* ===================== ACCENT GLOW EFFECTS ===================== */
+.glow-orange {
+  box-shadow: 0 0 20px var(--accent-glow), 0 0 60px rgba(255,95,31,0.1);
+}
+
+.glow-orange-text {
+  text-shadow: 0 0 20px rgba(255, 95, 31, 0.5);
+}
+
+.neon-border {
+  border: 1px solid var(--accent);
+  box-shadow: 0 0 10px var(--accent-glow), inset 0 0 10px rgba(255,95,31,0.05);
+}
+
+/* ===================== SHIMMER EFFECT ===================== */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 95, 31, 0.15) 40%,
+    rgba(255, 95, 31, 0.3) 50%,
+    rgba(255, 95, 31, 0.15) 60%,
+    transparent 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2.5s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+/* ===================== CODE OVERLAY BACKGROUND ===================== */
+.code-overlay {
+  position: relative;
+  overflow: hidden;
+}
+.code-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Ctext y='20' font-family='JetBrains Mono,monospace' font-size='9' fill='rgba(255,95,31,0.04)'%3Econst ai %3D new AgenticWorkflow()%3B%3C/text%3E%3Ctext y='40' font-family='JetBrains Mono,monospace' font-size='9' fill='rgba(255,95,31,0.03)'%3Eimport Flutter from 'dart:core'%3B%3C/text%3E%3Ctext y='60' font-family='JetBrains Mono,monospace' font-size='9' fill='rgba(255,95,31,0.04)'%3Eclass CleanArchitecture extends Widget%7B%7D%3C/text%3E%3Ctext y='80' font-family='JetBrains Mono,monospace' font-size='9' fill='rgba(255,95,31,0.03)'%3Econst firebase %3D initializeApp(config)%3B%3C/text%3E%3Ctext y='100' font-family='JetBrains Mono,monospace' font-size='9' fill='rgba(255,95,31,0.04)'%3Eawait BlocProvider.of%3CAppBloc%3E(ctx)%3C/text%3E%3Ctext y='120' font-family='JetBrains Mono,monospace' font-size='9' fill='rgba(255,95,31,0.03)'%3EStream%3CT%3E geofence(LatLng pos)%3C/text%3E%3Ctext y='140' font-family='JetBrains Mono,monospace' font-size='9' fill='rgba(255,95,31,0.04)'%3Efuture%3CVoid%3E uploadToFirestore()%3B%3C/text%3E%3Ctext y='160' font-family='JetBrains Mono,monospace' font-size='9' fill='rgba(255,95,31,0.03)'%3Eif (attendance.isPresent) log(user)%3B%3C/text%3E%3Ctext y='180' font-family='JetBrains Mono,monospace' font-size='9' fill='rgba(255,95,31,0.04)'%3Ereturn CleanCode.build(context)%3B%3C/text%3E%3Ctext y='200' font-family='JetBrains Mono,monospace' font-size='9' fill='rgba(255,95,31,0.03)'%3Ewidget.state.setState(()%7B...%7D)%3B%3C/text%3E%3C/svg%3E");
+  background-repeat: repeat;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.8;
+}
+
+/* ===================== SECTION STYLES ===================== */
+section {
+  position: relative;
+  z-index: 1;
+}
+
+.section-title {
+  font-family: 'Syncopate', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ===================== CTA BUTTON ===================== */
+.btn-primary {
+  position: relative;
+  background: var(--accent);
+  color: #fff;
+  font-family: 'Lexend', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.btn-primary:hover::before { opacity: 1; }
+.btn-primary:hover {
+  box-shadow: 0 0 30px var(--accent-glow), 0 0 60px rgba(255,95,31,0.3);
+  transform: translateY(-2px) scale(1.02);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-family: 'Lexend', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn-outline:hover {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+
+/* ===================== TIMELINE ===================== */
+.timeline-line {
+  background: linear-gradient(to bottom, var(--accent), rgba(255,95,31,0.2));
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+
+/* ===================== NAV ===================== */
+.nav-link {
+  position: relative;
+  font-family: 'Lexend', sans-serif;
+  transition: color 0.3s;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent-glow);
+  transition: width 0.3s ease;
+}
+.nav-link:hover, .nav-link.active { color: var(--accent); }
+.nav-link:hover::after, .nav-link.active::after { width: 100%; }
+
+/* ===================== FORM INPUTS ===================== */
+.form-input {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: #E0E0E0;
+  font-family: 'Lexend', sans-serif;
+  transition: all 0.3s ease;
+  outline: none;
+  backdrop-filter: blur(8px);
+}
+.form-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-glow), 0 0 20px rgba(255,95,31,0.1);
+}
+.form-input::placeholder { color: rgba(255,255,255,0.3); }
+
+/* ===================== PROGRESS BAR ===================== */
+.skill-bar {
+  height: 4px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.skill-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+  border-radius: 2px;
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+
+/* ===================== MOBILE BOTTOM NAV ===================== */
+.mobile-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(10,10,10,0.95);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255,95,31,0.2);
+  padding: 8px 0 env(safe-area-inset-bottom);
+}
+
+/* ===================== PORTRAIT FRAME ===================== */
+.portrait-container {
+  position: relative;
+  display: inline-block;
+}
+.portrait-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 40%, rgba(10,10,10,0.4) 100%);
+  pointer-events: none;
+}
+
+/* ===================== FLOATING CARD ===================== */
+.project-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.project-card:hover { transform: translateY(-8px) scale(1.01); }
+.project-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent, rgba(255,95,31,0.05));
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.project-card:hover::before { opacity: 1; }
+
+/* ===================== FADE IN ANIMATIONS ===================== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-in-up {
+  animation: fadeInUp 0.7s ease forwards;
+}
+
+/* ===================== GRADIENT TEXT ===================== */
+.gradient-text {
+  background: linear-gradient(135deg, #FF5F1F, #FF9A5C);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
